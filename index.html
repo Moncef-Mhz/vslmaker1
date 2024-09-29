@@ -31,18 +31,18 @@
 
         <!-- Folder log section -->
         <div class="log">
-          <div>
+          <div class="div1">
             <div>
-              <input type="checkbox" name="selectall" id="" />
+              <input type="checkbox" name="selectall" id="masterCheckbox" />
               <div>Folder Name</div>
             </div>
             <div>Items</div>
             <div>Modified At</div>
           </div>
 
-          <div>
+          <div class="div2">
             <div>
-              <input type="checkbox" name="selectall" id="" />
+              <input type="checkbox" name="selectall"  class="subCheckbox" />
               <div>Folder Num 1</div>
             </div>
             <div>2</div>
@@ -65,9 +65,9 @@
             </div>
           </div>
 
-          <div>
+          <div class="div3">
             <div>
-              <input type="checkbox" name="selectall" id="" />
+              <input type="checkbox" name="selectall" class="subCheckbox" />
               <div>Folder Num 2</div>
             </div>
             <div>1</div>
@@ -136,21 +136,26 @@
     </div>
 
     <!-- Success Modal (new modal) -->
-<div id="successModal" class="modal2">
-  <div class="modal-content">
-    <div class="modal-text">
-      <h2>Add New Name:</h2>
-    </div>
+    <div id="successModal" class="modal2">
+      <div class="modal-content">
+        <div class="modal-text">
+          <h2>Add New Name:</h2>
+        </div>
 
-    <!-- Single input field -->
-    <input type="text" id="NewName" placeholder="Add New Name" class="input-field" />
+        <!-- Single input field -->
+        <input
+          type="text"
+          id="NewName"
+          placeholder="Add New Name"
+          class="input-field"
+        />
 
-    <!-- Action button to submit the input -->
-    <div class="modal-buttons">
-      <button class="upload-btn" id="SaveName">Save</button>
+        <!-- Action button to submit the input -->
+        <div class="modal-buttons">
+          <button class="upload-btn" id="SaveName">Save</button>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
     <script src="script.js"></script>
   </body>

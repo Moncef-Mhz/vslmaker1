@@ -10,6 +10,8 @@ const fileUpload = document.getElementById("fileUpload");
 const uploadModal = document.getElementById("uploadModal");
 const successModal = document.getElementById("successModal");
 const SaveName = document.getElementById("SaveName");
+const masterCheckbox = document.getElementById("masterCheckbox");
+const subCheckboxes = document.querySelectorAll(".subCheckbox");
 
 let selectedFolder = null; // Store the selected folder to delete
 
@@ -99,4 +101,28 @@ SaveName.addEventListener("click", function () {
   const NewName = document.getElementById("NewName").value;
   console.log("Additional Info Submitted: ", NewName);
   closeSuccessModal(); // Close the success modal after submission
+});
+
+// Add event listener to the master checkbox
+masterCheckbox.addEventListener("change", function () {
+  // Loop through all the sub checkboxes
+  subCheckboxes.forEach(function (checkbox) {
+    // Set the sub checkboxes' checked status to match the master checkbox
+    checkbox.checked = masterCheckbox.checked;
+  });
+});
+
+// Optional: Add event listeners to individual checkboxes to uncheck master checkbox when not all are selected
+subCheckboxes.forEach(function (checkbox) {
+  checkbox.addEventListener("change", function () {
+    // If any sub checkbox is unchecked, uncheck the master checkbox
+    if (!checkbox.checked) {
+      masterCheckbox.checked = false;
+    }
+
+    // If all sub checkboxes are checked, check the master checkbox
+    if (Array.from(subCheckboxes).every((cb) => cb.checked)) {
+      masterCheckbox.checked = true;
+    }
+  });
 });
