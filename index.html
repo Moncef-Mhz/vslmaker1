@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Folder Management</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <img src="assets/logo.svg" alt="" />
+      <div class="right">
+        <span>Credits Remaining: 10</span>
+        <div class="line"></div>
+        <img src="assets/Profile.svg" alt="" />
+      </div>
+    </header>
+
+    <div class="content">
+      <div class="box">
+        <div>
+          <div class="folderpath">
+            <h1>Asset Library</h1>
+            <img src="assets/Chevron-down.svg" alt="" />
+          </div>
+          <div class="newFolder" id="new-folder">
+            <img src="assets/create.svg" alt="" />
+            <h1>Create New Folder</h1>
+          </div>
+        </div>
+
+        <!-- Folder log section -->
+        <div class="log">
+          <div>
+            <div>
+              <input type="checkbox" name="selectall" id="" />
+              <div>Folder Name</div>
+            </div>
+            <div>Items</div>
+            <div>Modified At</div>
+          </div>
+
+          <div>
+            <div>
+              <input type="checkbox" name="selectall" id="" />
+              <div>Folder Num 1</div>
+            </div>
+            <div>2</div>
+            <div>Sep 20, 11:13pm</div>
+            <img
+              src="assets/dots.svg"
+              alt=""
+              id="actionIcon1"
+              class="actionIcon"
+            />
+            <div class="actions" id="actionBox1">
+              <div>
+                <img src="assets/rename.svg" alt="" />
+                Rename
+              </div>
+              <div class="delete-action">
+                <img src="assets/delete.svg" alt="" />
+                Delete
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div>
+              <input type="checkbox" name="selectall" id="" />
+              <div>Folder Num 2</div>
+            </div>
+            <div>1</div>
+            <div>Sep 19, 05:58am</div>
+            <img
+              src="assets/dots.svg"
+              alt=""
+              id="actionIcon2"
+              class="actionIcon"
+            />
+            <div class="actions" id="actionBox2">
+              <div>
+                <img src="assets/rename.svg" alt="" />
+                Rename
+              </div>
+              <div class="delete-action">
+                <img src="assets/delete.svg" alt="" />
+                Delete
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="modal">
+      <div class="modal-content">
+        <h2>Confirmation</h2>
+        <p>Are you sure you want to delete this asset and its content?</p>
+        <div class="modal-buttons">
+          <button id="deleteCancelBtn" class="cancel-btn">Cancel</button>
+          <button id="deleteBtn" class="delete-btn">Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Upload Confirmation Modal -->
+    <div id="uploadModal" class="modal2">
+      <div class="modal-content">
+        <div class="modal-text">
+          <h2>Upload Folder</h2>
+          <p>Please make sure your folder contains video</p>
+        </div>
+
+        <!-- File input section -->
+
+        <input type="file" id="fileUpload" class="fileUpload" />
+
+        <!-- Progress bar and percentage -->
+        <div>
+          <div class="progressPercent">
+            <span id="progressPercent">0%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress" id="progressBar"></div>
+          </div>
+        </div>
+
+        <!-- Action buttons -->
+        <div class="modal-buttons">
+          <button class="cancel-btn" id="uploadCancelBtn">Cancel</button>
+          <button class="upload-btn" id="uploadBtn">Upload</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Success Modal (new modal) -->
+<div id="successModal" class="modal2">
+  <div class="modal-content">
+    <div class="modal-text">
+      <h2>Add New Name:</h2>
+    </div>
+
+    <!-- Single input field -->
+    <input type="text" id="NewName" placeholder="Add New Name" class="input-field" />
+
+    <!-- Action button to submit the input -->
+    <div class="modal-buttons">
+      <button class="upload-btn" id="SaveName">Save</button>
+    </div>
+  </div>
+</div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,360 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(196, 113, 255, 0.1) 88%,
+    rgba(148, 0, 255, 0.06) 100%
+  );
+  min-height: 100vh;
+  scroll-behavior: smooth;
+}
+
+header {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 0.2px solid rgba(0, 0, 0, 0.115);
+  padding: 0.84vw 7.5vw;
+  font-weight: 600;
+}
+.right {
+  display: flex;
+  align-items: center;
+}
+
+header > .right > span {
+  padding: 0.555vw 1.111vw;
+  border-right: solid 2px #00000045;
+}
+header > .right > img {
+  padding-left: 1.111vw;
+  height: 3.777vw;
+  aspect-ratio: 1;
+}
+header > img {
+  height: 2.666vw;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  padding: 3.88vw 5%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+.box {
+  width: 100%;
+  height: fit-content;
+  border: solid 1px #0000004d;
+  background: white;
+  border-radius: 8px;
+  padding-bottom: 2.77vw;
+}
+.box > div:first-child {
+  width: 100%;
+  padding: 0 1.666vw;
+  padding-top: 2.18vw;
+  padding-bottom: 1.63vw;
+  border-bottom: solid 1px #0000004d;
+  font-size: 1.666vw;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.box > div > .newFolder {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.box > div > .newFolder > h1 {
+  font-size: 20px;
+  font-weight: 600;
+}
+.box > div > .newFolder:hover {
+  background-color: #00000010;
+}
+
+.box > div > .newFolder > img {
+  height: 1.666vw;
+}
+.box > div > .folderpath {
+  display: flex;
+  align-items: center;
+  gap: 0.7vw;
+}
+.box > div > .folderpath > h1 {
+  font-size: 24px;
+}
+.box > div > .folderpath > img {
+  height: 1.666vw;
+}
+.box > .log {
+  padding: 0 2.22vw;
+}
+
+.box > .log > div {
+  display: flex;
+  align-items: center;
+  border-bottom: solid 1px #0000004d;
+  padding: 1.7vw 0;
+  font-size: 1.388vw;
+  font-weight: 500;
+}
+.box > .log > div > div:first-child {
+  display: flex;
+  align-items: center;
+  gap: 2.222vw;
+  width: 54.9vw;
+}
+.box > .log > div > div:nth-child(2) {
+  margin-left: 1.5vw;
+  width: 5.9vw;
+}
+.box > .log > div > div:nth-child(3) {
+  width: 18vw;
+  margin-right: 4vw;
+}
+
+.box > .log > div:first-child > div:first-child {
+  display: flex;
+  align-items: center;
+  gap: 0.7vw;
+}
+.box > .log > div:first-child > div:nth-child(2) {
+  width: 8.3vw;
+  margin-left: 0;
+}
+.box > .log > div:first-child > div:nth-child(3) {
+  margin-right: 0vw;
+  width: 21vw;
+}
+
+.box > .log > div > div:first-child > input {
+  transform: scale(1.7);
+  border: black;
+}
+
+.log > div {
+  position: relative;
+}
+.log > div > img {
+  cursor: pointer;
+}
+
+.log > div > .actions {
+  position: absolute;
+  display: none;
+  background: white;
+  border-radius: 0.5vw;
+  right: 0;
+  top: 4.3vw;
+  box-shadow: 0 0 0.2vw #0000004d;
+  border: solid 1px #0000004d;
+  z-index: 99;
+}
+.log > div > .actions > div {
+  display: flex;
+  align-items: center;
+  gap: 0.5vw;
+  padding: 0.5vw 0.6vw;
+  cursor: pointer;
+  font-size: 0.9vw;
+}
+.log > div > .actions > div:first-child {
+  border-bottom: solid 1px #0000004d;
+  padding-right: 2vw;
+}
+
+.log > div > .actions.open {
+  display: block;
+}
+
+/* Delete Confirmation Modal */
+.modal {
+  display: none; /* Hidden by default */
+  position: absolute;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 30%;
+  text-align: center;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: end;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+/* Modal header and text */
+.modal-content h2 {
+  margin-bottom: 10px;
+}
+
+.modal-content p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* upload */
+.modal2 {
+  display: none; /* Hidden by default */
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  text-align: center;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: end;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+/* Modal header and text */
+.modal-text {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.modal-text p,
+.modal-text h2 {
+  margin: 0;
+}
+.modal-text h2 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.modal-text p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Progress bar container and styling */
+.progressPercent {
+  width: 100%;
+  display: flex;
+  font-size: 18px;
+  font-weight: 600;
+}
+.progressPercent span {
+  margin: 0;
+}
+.progress-bar {
+  width: 100%;
+  background-color: #d9d9d9;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 15px 0;
+}
+
+.progress {
+  height: 15px;
+  background-color: #864af9;
+  width: 0%;
+  transition: width 0.3s;
+}
+
+/* Modal button styling */
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.cancel-btn,
+.upload-btn,
+.delete-btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background-color: #f94a4a;
+  color: white;
+  border: none;
+}
+
+.cancel-btn {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+}
+
+.upload-btn {
+  background-color: #864af9;
+  color: white;
+  border: none;
+}
+
+/* Hidden file input */
+
+.fileUpload {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 16px;
+}
+.fileUpload::-webkit-file-upload-button {
+  background: #864af9;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.active {
+  display: block;
+}
+
+.input-field {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #cccccc;
+}
