@@ -33,6 +33,13 @@ actionIcons.forEach((icon, index) => {
     const actionBox = document.getElementById(`actionBox${index + 1}`);
     actionBox.style.display =
       actionBox.style.display === "block" ? "none" : "block";
+    document.addEventListener("click", function outsideClickHandler(event) {
+      // Check if the clicked target is not the action box or the icon itself
+      if (!actionBox.contains(event.target) && !icon.contains(event.target)) {
+        actionBox.style.display = "none";
+        document.removeEventListener("click", outsideClickHandler); // Remove the listener once it's triggered
+      }
+    });
   });
 });
 
@@ -106,30 +113,30 @@ uploadBtn.addEventListener("click", function () {
 // Handle submit button in the success modal
 SaveName.addEventListener("click", function () {
   const NewName = document.getElementById("NewName").value;
-  console.log("Additional Info Submitted: ", NewName);
+  console.log("New Name: ", NewName);
   closeSuccessModal(); // Close the success modal after submission
 });
 
 // Add event listener to the master checkbox
-masterCheckbox.addEventListener("change", function () {
-  // Loop through all the sub checkboxes
-  subCheckboxes.forEach(function (checkbox) {
-    // Set the sub checkboxes' checked status to match the master checkbox
-    checkbox.checked = masterCheckbox.checked;
-  });
-});
+// masterCheckbox.addEventListener("change", function () {
+//   // Loop through all the sub checkboxes
+//   subCheckboxes.forEach(function (checkbox) {
+//     // Set the sub checkboxes' checked status to match the master checkbox
+//     checkbox.checked = masterCheckbox.checked;
+//   });
+// });
 
-// Optional: Add event listeners to individual checkboxes to uncheck master checkbox when not all are selected
-subCheckboxes.forEach(function (checkbox) {
-  checkbox.addEventListener("change", function () {
-    // If any sub checkbox is unchecked, uncheck the master checkbox
-    if (!checkbox.checked) {
-      masterCheckbox.checked = false;
-    }
+// // Optional: Add event listeners to individual checkboxes to uncheck master checkbox when not all are selected
+// subCheckboxes.forEach(function (checkbox) {
+//   checkbox.addEventListener("change", function () {
+//     // If any sub checkbox is unchecked, uncheck the master checkbox
+//     if (!checkbox.checked) {
+//       masterCheckbox.checked = false;
+//     }
 
-    // If all sub checkboxes are checked, check the master checkbox
-    if (Array.from(subCheckboxes).every((cb) => cb.checked)) {
-      masterCheckbox.checked = true;
-    }
-  });
-});
+//     // If all sub checkboxes are checked, check the master checkbox
+//     if (Array.from(subCheckboxes).every((cb) => cb.checked)) {
+//       masterCheckbox.checked = true;
+//     }
+//   });
+// });
