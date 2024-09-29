@@ -1,6 +1,7 @@
 // Get necessary elements
 const actionIcons = document.querySelectorAll(".actionIcon");
 const deleteModal = document.getElementById("deleteModal");
+// const
 const newfolderBtn = document.getElementById("new-folder");
 const deletecancelBtn = document.getElementById("deleteCancelBtn");
 const uploadCancelBtn = document.getElementById("uploadCancelBtn");
@@ -40,6 +41,13 @@ document.querySelectorAll(".delete-action").forEach((deleteAction, index) => {
   deleteAction.addEventListener("click", () => {
     const folderName = `Folder Num ${index + 1}`; // Adjust this to get the actual folder name dynamically
     openDeleteModal(folderName);
+  });
+});
+
+document.querySelectorAll(".rename-action").forEach((renameAction, index) => {
+  renameAction.addEventListener("click", () => {
+    const folderName = `Folder Num ${index + 1}`;
+    openSuccessModal();
   });
 });
 
@@ -91,7 +99,6 @@ uploadBtn.addEventListener("click", function () {
     if (progress >= 100) {
       clearInterval(interval);
       closeModal(); // Close the upload modal once the progress reaches 100%
-      openSuccessModal(); // Open the new success modal after upload completes
     }
   }, 300);
 });
